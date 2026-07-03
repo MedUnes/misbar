@@ -1,8 +1,8 @@
 # Build output
-/misbar
-/misbar-linux-amd64
-/misbar-linux-arm64
-/dist/
+./misbar
+./misbar-linux-amd64
+./misbar-linux-arm64
+./dist/
 
 # Test / coverage
 *.out
