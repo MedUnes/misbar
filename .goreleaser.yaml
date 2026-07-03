@@ -1,0 +1,49 @@
+version: 2
+
+project_name: misbar
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: misbar
+    main: ./cmd/misbar/
+    binary: misbar
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: misbar
+    formats:
+      - tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-snapshot"
+
+changelog:
+  use: git
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+
+release:
+  github:
+    owner: medunes
+    name: misbar

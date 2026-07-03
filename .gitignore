@@ -1,0 +1,19 @@
+# Build output
+/misbar
+/misbar-linux-amd64
+/misbar-linux-arm64
+/dist/
+
+# Test / coverage
+*.out
+*.test
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+misbar
+misbar-spec.md
+misbar-plan.md
+CLAUDE.md
